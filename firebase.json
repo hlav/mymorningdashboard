@@ -1,0 +1,9 @@
+{
+  "firebase": "g18-lavigne",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
