@@ -20,6 +20,16 @@ margin: auto;
 
   }
 
+main{
+display: flex;
+flex-direction: row;
+}
+
+
+
+#right{
+  overflow: hidden;
+}
   .button {
     float: left;
     margin: 40px;
