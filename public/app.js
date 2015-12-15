@@ -1,16 +1,32 @@
-var ajaxCall = $.ajax( {
-  url:
-  method: "GET",
-  dataType: "json"
-});
+// var ajaxCall = $.ajax( {
+//   url:"http://api.wunderground.com/api/d491a9e3880f0a90/geolookup/q/80210.json",
+//   method: "GET",
+//   dataType: "json"
+// });
+//
+// ajaxCall.done(function(response){
+//   console.log(response);
+// })
 
-function initialize() {
-       var mapCanvas = document.getElementById('map');
-       var mapOptions = {
-         center: new google.maps.LatLng(44.5403, -78.5463),
-         zoom: 8,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
-       }
-       var map = new google.maps.Map(mapCanvas, mapOptions)
-     };
-     google.maps.event.addDomListener(window, 'load', initialize);
+
+jQuery(document).ready(function() {
+  $.ajax({
+  url : "http://api.wunderground.com/api/d491a9e3880f0a90/forecast/q/80202.json",
+  dataType : "jsonp",
+  success : function(parsed_json) {
+  var todayTime = parsed_json["forecast"]["txt_forecast"]["date"];
+  var dayOfWeek = parsed_json["forecast"]["txt_forecast"]["forecastday"][0]["title"]
+  var forecastText = parsed_json["forecast"]["txt_forecast"]["forecastday"][0]["fcttext"];
+  var todayHigh = parsed_json["forecast"]["simpleforecast"]["forecastday"][0]["high"]["fahrenheit"];
+  var todayLow = parsed_json["forecast"]["simpleforecast"]["forecastday"][0]["low"]["fahrenheit"];
+  var conditions = parsed_json["forecast"]["simpleforecast"]["forecastday"][0]["conditions"];
+  var icon = parsed_json["forecast"]["txt_forecast"]["forecastday"][0]["icon"];
+  var iconURL = parsed_json["forecast"]["txt_forecast"]["forecastday"][0]["icon_url"];
+  $(".flex-container").append(    '<li class="flex-item">'+ dayOfWeek + " at "+ todayTime +'</li>');
+
+  $(".flex-container").append( '<li><img src="' +iconURL+ '"/>'+ conditions +'</li>');
+  $(".flex-container").append(    '<li class="flex-item">'+ forecastText +'</li>');
+
+  }
+  });
+});
