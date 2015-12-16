@@ -50,6 +50,7 @@ h2{
 }
 
 li {
+  border: 1px solid grey;
   border-radius: 5px;
   background: tomato;
   padding: 15px;
@@ -70,6 +71,11 @@ li {
 
 #forecastText{
 
+}
+#left a{
+color: white;
+/*align-self: flex-end;*/
+float: left;
 }
 
 li span{

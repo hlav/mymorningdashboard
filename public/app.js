@@ -2,7 +2,8 @@
 
 jQuery(document).ready(function() {
   $.ajax({
-    url : "http://api.wunderground.com/api/d491a9e3880f0a90/forecast/q/80202.json",
+
+    url : "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/d491a9e3880f0a90/forecast/q/80202.json",
     method: "GET",
     dataType: "jsonp",
     success: function(parsed_json){
@@ -20,15 +21,14 @@ jQuery(document).ready(function() {
       $(".flex-container").append(    '<li id="forecastText" class="flex-item">'+ forecastText +' </li>');
     }
   });
-
   $.ajax( {
-    url:"http://api.wunderground.com/api/d491a9e3880f0a90/conditions/q/80202.json",
+    url:"https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/d491a9e3880f0a90/conditions/q/80202.json",
     method: "GET",
     dataType: "jsonp",
     success : function(response) {
       var currentLocation = response["current_observation"]["display_location"]["full"];
       var currentTemp = response["current_observation"]["temp_f"];
-      $(".flex-container").append(    '<li class="flex-item" id="firstWeatherbit">  Current Temp: <br> <span>' + currentTemp + ' F</span></li>');
+      $(".flex-container").append(    '<li class="flex-item" id="firstWeatherbit">  Current Temp: <br> <span>' + currentTemp + ' &deg;F</span></li>');
       $("#weatherHeader").append( '<span> in ' + currentLocation + ' </span>')
     }
   });
