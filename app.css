@@ -31,7 +31,6 @@ flex-direction: row;
   padding: 0;
   margin: 0;
   list-style: none;
-
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -53,7 +52,7 @@ h2{
 li {
   border-radius: 5px;
   background: tomato;
-  padding: 5px;
+  padding: 15px;
   /*width: 200px;*/
   /*height: 100px;*/
   /*margin-top: 10px;*/
@@ -79,6 +78,8 @@ li span{
 #right{
   overflow: hidden;
 }
+
+#left{width: 20vw;}
   .button {
     float: left;
     margin: 40px;
@@ -115,6 +116,7 @@ li span{
      }
 
 div{
+overflow-y: scroll;
 margin-top: 10px;
 margin-right: 20px;
 float: right;

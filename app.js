@@ -14,10 +14,10 @@ jQuery(document).ready(function() {
       var conditions = parsed_json["forecast"]["simpleforecast"]["forecastday"][0]["conditions"];
       var icon = parsed_json["forecast"]["txt_forecast"]["forecastday"][0]["icon"];
       var iconURL = parsed_json["forecast"]["txt_forecast"]["forecastday"][0]["icon_url"];
-      $(".flex-container").append(    '<li class="flex-item">'+ dayOfWeek + ' at ' + todayTime +'</li>');
+      $(".flex-container").append(    '<li class="flex-item"> Update as of: '+ dayOfWeek + ' at ' + todayTime +'</li>');
 
       $(".flex-container").append( '<li><img src="' +iconURL+ '"/>'+ conditions +'</li>');
-      $(".flex-container").append(    '<li id="forecastText" class="flex-item">'+ forecastText +'</li>');
+      $(".flex-container").append(    '<li id="forecastText" class="flex-item">'+ forecastText +' </li>');
     }
   });
 
