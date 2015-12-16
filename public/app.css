@@ -2,6 +2,8 @@
 body{
 margin: 0;
 font-family: gill sans;
+color: white;
+font-weight: lighter;
 background-color: lightgrey;
   }
 
@@ -36,25 +38,38 @@ flex-direction: row;
   display: -webkit-flex;
   display: flex;
 
-  -webkit-flex-flow: row wrap;
+  -webkit-flex-flow: column wrap;
   justify-content: space-around;
+  /*align-content: center;*/
+  align-items: center;
+}
+
+h2{
+  font-weight: lighter;
+  text-align: center;
+  /*font-family: cursive;*/
 }
 
 li {
   border-radius: 10px;
   background: tomato;
   padding: 5px;
-  width: 300px;
+  width: 200px;
   height: 100px;
   margin-top: 10px;
 
   /*line-height: 150px;*/
   color: white;
-  font-weight: bold;
+  /*font-weight: bold;*/
   font-size: 1em;
   text-align: center;
 }
-
+#firstWeatherbit{
+  order: -1;
+  }
+li span{
+  font-size: 3em;
+}
 #right{
   overflow: hidden;
 }
@@ -98,6 +113,6 @@ margin-top: 10px;
 margin-right: 20px;
 float: right;
 border: 3px solid white;
-width: 40vw;
+width: 30vw;
 height: 80vh;
   }
