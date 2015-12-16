@@ -1,13 +1,12 @@
-require("cors-anywhere")
 
 
 
 jQuery(document).ready(function() {
   $.ajax({
 
-    url : "http://api.wunderground.com/api/d491a9e3880f0a90/forecast/q/80202.json",
+    url : "https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/d491a9e3880f0a90/forecast/q/80202.json",
     method: "GET",
-    dataType: "jsonp",
+    dataType: "json",
     success: function(parsed_json){
       var todayTime = parsed_json["forecast"]["txt_forecast"]["date"];
       var dayOfWeek = parsed_json["forecast"]["txt_forecast"]["forecastday"][0]["title"]
@@ -24,9 +23,9 @@ jQuery(document).ready(function() {
     }
   });
   $.ajax( {
-    url:"http://api.wunderground.com/api/d491a9e3880f0a90/conditions/q/80202.json",
+    url:"https://cors-anywhere.herokuapp.com/http://api.wunderground.com/api/d491a9e3880f0a90/conditions/q/80202.json",
       method: "GET",
-    dataType: "jsonp",
+    dataType: "json",
     success : function(response) {
       var currentLocation = response["current_observation"]["display_location"]["full"];
       var currentTemp = response["current_observation"]["temp_f"];

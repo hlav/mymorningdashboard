@@ -74,9 +74,8 @@ li {
 }
 #left a{
 color: white;
-/*align-self: flex-end;*/
-float: left;
-}
+font-size: 10px;
+align-self: flex-end;}
 
 li span{
   font-size: 3em;
