@@ -17,7 +17,7 @@ jQuery(document).ready(function() {
       $(".flex-container").append(    '<li class="flex-item">'+ dayOfWeek + ' at ' + todayTime +'</li>');
 
       $(".flex-container").append( '<li><img src="' +iconURL+ '"/>'+ conditions +'</li>');
-      $(".flex-container").append(    '<li class="flex-item">'+ forecastText +'</li>');
+      $(".flex-container").append(    '<li id="forecastText" class="flex-item">'+ forecastText +'</li>');
     }
   });
 
