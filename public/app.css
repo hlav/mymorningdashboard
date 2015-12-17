@@ -25,6 +25,7 @@ margin: auto;
 main{
 display: flex;
 flex-direction: row;
+justify-content: flex-end;
 }
 
 .flex-container {
@@ -52,7 +53,7 @@ h2{
 li {
   border: 1px solid grey;
   border-radius: 5px;
-  background: tomato;
+  background: slategrey;
   padding: 15px;
   /*width: 200px;*/
   /*height: 100px;*/
@@ -73,14 +74,17 @@ li {
 
 }
 #left a{
+position: absolute;
 color: white;
 font-size: 10px;
+bottom: 0;
+right: 0;
 align-self: flex-end;}
 
 li span{
   font-size: 3em;
 }
-#right{
+#middle{
   overflow: hidden;
 }
 
@@ -121,10 +125,11 @@ li span{
      }
 
 div{
+
 overflow-y: scroll;
 margin-top: 10px;
 margin-right: 20px;
-float: right;
+/*float: right;*/
 border: 3px solid white;
 width: 30vw;
 height: 80vh;
