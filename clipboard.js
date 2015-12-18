@@ -1,11 +1,12 @@
+
 var defaults = {
   // CSS selectors and attributes that would be used by the JavaScript functions
-  clipTask: "todo-task",
-  clipHeader: "task-header",
-  clipDate: "task-date",
-  clipDescription: "task-description",
-  clipId: "task-",
-  formId: "todo-form",
+  clipTask: "clipTask",
+  clipHeader: "clipHeader",
+  clipDate: "clipDate",
+  clipDescription: "clipDescription",
+  clipId: "clip-",
+  formId: "clipForm",
   dataAttribute: "data",
   deleteDiv: "delete-div"
 }, codes = {
@@ -25,24 +26,24 @@ var generateElement = function(params) {
   }
 
   wrapper = $("<div />", {
-     "class" : defaults.todoTask,
+     "class" : defaults.clipTask,
      "id" : defaults.taskId + params.id,
      "data" : params.id
    }).appendTo(parent);
 
    $("<div />", {
-  "class" : defaults.todoHeader,
+  "class" : defaults.clipHeader,
   "text": params.title
 }).appendTo(wrapper);
 
 $("<div />", {
-    "class" : defaults.todoDate,
+    "class" : defaults.clipDate,
     "text": params.date
   }).appendTo(wrapper);
 
 
   $("<div />", {
-    "class" : defaults.todoDescription,
+    "class" : defaults.clipDescription,
     "text": params.description
   }).appendTo(wrapper);
 };
@@ -51,8 +52,8 @@ var removeElement = function(params) {
   $("#" + defaults.taskId + params.id).remove();
 };
 
-var data = JSON.parse(localStorage.getItem("todoData"));
-localStorage.setItem("todoData", JSON.stringify(data));
+var data = JSON.parse(localStorage.getItem("clipData"));
+localStorage.setItem("clipData", JSON.stringify(data));
 
 var addItem = function() {
   var inputs = $("#" + defaults.formId + " :input"),
@@ -84,7 +85,7 @@ var addItem = function() {
 
   // Saving element in local storage
   data[id] = tempData;
-  localStorage.setItem("todoData", JSON.stringify(data));
+  localStorage.setItem("clipData", JSON.stringify(data));
 
   // Generate Todo Element
   generateElement(tempData);
@@ -95,51 +96,51 @@ var addItem = function() {
   inputs[2].value = "";
 };
 
-// Adding drop function to each category of task
-$.each(codes, function(index, value) {
-  $(value).droppable({
-    drop: function(event, ui) {
-      var element = ui.helper,
-          css_id = element.attr("id"),
-          id = css_id.replace(options.taskId, ""),
-          object = data[id];
-
-      // Removing old element
-      removeElement(object);
-
-      // Changing object code
-      object.code = index;
-
-      // Generating new element
-      generateElement(object);
-
-      // Updating Local Storage
-      data[id] = object;
-      localStorage.setItem("todoData", JSON.stringify(data));
-
-      // Hiding Delete Area
-      $("#" + defaults.deleteDiv).hide();
-    }
-  });
-});
-
-
-// Adding drop function to delete div
-$("#" + options.deleteDiv).droppable({
-  drop: function(event, ui) {
-    var element = ui.helper,
-        css_id = element.attr("id"),
-        id = css_id.replace(options.taskId, ""),
-        object = data[id];
-
-    // Removing old element
-    removeElement(object);
-
-    // Updating local storage
-    delete data[id];
-    localStorage.setItem("todoData", JSON.stringify(data));
-
-    // Hiding Delete Area
-    $("#" + defaults.deleteDiv).hide();
-  }
-});  
+// // Adding drop function to each category of task
+// $.each(codes, function(index, value) {
+//   $(value).droppable({
+//     drop: function(event, ui) {
+//       var element = ui.helper,
+//           css_id = element.attr("id"),
+//           id = css_id.replace(options.taskId, ""),
+//           object = data[id];
+//
+//       // Removing old element
+//       removeElement(object);
+//
+//       // Changing object code
+//       object.code = index;
+//
+//       // Generating new element
+//       generateElement(object);
+//
+//       // Updating Local Storage
+//       data[id] = object;
+//       localStorage.setItem("clipData", JSON.stringify(data));
+//
+//       // Hiding Delete Area
+//       $("#" + defaults.deleteDiv).hide();
+//     }
+//   });
+// });
+//
+//
+// // Adding drop function to delete div
+// $("#" + options.deleteDiv).droppable({
+//   drop: function(event, ui) {
+//     var element = ui.helper,
+//         css_id = element.attr("id"),
+//         id = css_id.replace(options.taskId, ""),
+//         object = data[id];
+//
+//     // Removing old element
+//     removeElement(object);
+//
+//     // Updating local storage
+//     delete data[id];
+//     localStorage.setItem("clipData", JSON.stringify(data));
+//
+//     // Hiding Delete Area
+//     $("#" + defaults.deleteDiv).hide();
+//   }
+// });

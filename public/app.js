@@ -34,3 +34,78 @@ jQuery(document).ready(function() {
     }
   });
 });
+$(function() {
+  $( "#draggable" ).draggable();
+  $( "#droppable" ).droppable({
+    drop: function( event, ui ) {
+      $( this )
+        .addClass( "ui-state-highlight" )
+        .find( "p" )
+          .html( "Dropped!" );
+    }
+  });
+});
+
+
+$(".btn-primary").click(function(){
+
+  $("#right").append(
+  '<div id="draggable" class="ui-widget-content"><p>'+ $("#textarea")[0].value + '</p></div>'
+    )
+    
+})
+
+
+
+var defaults = {
+  // CSS selectors and attributes that would be used by the JavaScript functions
+  todoTask: "todo-task",
+  // todoHeader: "task-header",
+  // todoDate: "task-date",
+  todoDescription: "task-description",
+  taskId: "task-",
+  formId: "todo-form",
+  dataAttribute: "data",
+  deleteDiv: "delete-div"
+}, codes = {
+  "1" : "#pending", // For pending tasks
+  "2" : "#inProgress",
+  "3" : "#completed"
+};
+
+// Add Task
+var generateElement = function(params) {
+  var parent = $(codes[params.code]),
+      wrapper;
+
+  if (!parent) {
+    return;
+  }
+
+  wrapper = $("<div />", {
+    "class" : defaults.todoTask,
+    "id" : defaults.taskId + params.id,
+    "data" : params.id
+  }).appendTo(parent);
+
+  // $("<div />", {
+  //   "class" : defaults.todoHeader,
+  //   "text": params.title
+  // }).appendTo(wrapper);
+
+  // $("<div />", {
+  //   "class" : defaults.todoDate,
+  //   "text": params.date
+  // }).appendTo(wrapper);
+
+  $("<div />", {
+    "class" : defaults.todoDescription,
+    "text": params.description
+  }).appendTo(wrapper);
+};
+
+var removeElement = function(params) {
+  $("#" + defaults.taskId + params.id).remove();
+};
+
+var data = JSON.parse(localStorage.getItem("todoData"));
